@@ -1,0 +1,23 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
+  <div>{{ title }}</div>
+  <button type="button" mat-icon-button (click)="close('no')" tabindex="-1">
+    <mat-icon svgIcon="mat:close"></mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content class="my-5">
+  <p>{{ content }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions class="justify-end">
+  <button class="uppercase" mat-button (click)="close('no')">
+    {{ cancelLabel }}
+  </button>
+  <button
+    class="uppercase"
+    mat-raised-button
+    [color]="confirmationColor"
+    (click)="close('yes')">
+    {{ confirmLabel }}
+  </button>
+</mat-dialog-actions>
