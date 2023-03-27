@@ -9,8 +9,8 @@ import { environment } from 'src/environments/environment';
     CommonModule,
     OAuthModule.forRoot({
       resourceServer: {
-        allowedUrls: [environment.appApiUrl, environment.configApiUrl],
-        sendAccessToken: true
+        allowedUrls: [environment.appApiUrl],
+        sendAccessToken: false
       }
     })
   ]

@@ -8,12 +8,12 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       {
-        path: 'administracion',
+        path: 'main',
         loadChildren: () =>
-          import('./modules/administration/administration.module').then(
-            m => m.AdministrationModule
+          import('./modules/main/main.module').then(
+            m => m.MainModule
           )
-      }
+      },
     ]
   }
 ];

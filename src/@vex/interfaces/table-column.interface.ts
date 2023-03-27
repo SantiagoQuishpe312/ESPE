@@ -13,5 +13,7 @@ export interface TableColumn<T> {
     | 'datetime'
     | 'object';
   visible?: boolean;
+  subProperty?: string[];
   cssClasses?: string[];
+  columnDef?: string;
 }

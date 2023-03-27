@@ -71,11 +71,10 @@ export class AuthService {
 
   private setGlobalUser(user: GlobalUser) {
     // TODO: Remove this when the backend is fixed
-    user.pidm = 289444;
+    // user.pidm = 289444; //director
+//    user.pidm = 8014; //coordinador
     this.globalUserSubject.next(user);
   }
-
-
   public capture(redirectable: string): void {
     this.oAuthService.initImplicitFlow(redirectable);
 }
@@ -93,6 +92,7 @@ public obtainAccessToken() {
 }
 
 public refreshToken(): void{
+  console.log("entró a refreshToken")
   this.oAuthService.refreshToken();
 }
 
@@ -127,6 +127,5 @@ public getUserInfo(): string {
       return typeof idToken['sub'] !== 'undefined' ? idToken['sub'].toString() : '';
   }
 }
-
 
 }

@@ -1,10 +1,8 @@
-import { Component, ElementRef, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 import { LayoutService } from '../../services/layout.service';
 import { ConfigService } from '../../config/config.service';
-import { map, startWith, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { NavigationService } from '../../services/navigation.service';
-import { PopoverService } from '../../components/popover/popover.service';
-import { MegaMenuComponent } from '../../components/mega-menu/mega-menu.component';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -37,13 +35,10 @@ export class ToolbarComponent {
     map(config => config.toolbar.user.visible)
   );
 
-  megaMenuOpen$: Observable<boolean> = of(false);
-
   constructor(
     private layoutService: LayoutService,
     private configService: ConfigService,
-    private navigationService: NavigationService,
-    private popoverService: PopoverService
+    private navigationService: NavigationService
   ) {}
 
   openQuickpanel(): void {
@@ -52,33 +47,6 @@ export class ToolbarComponent {
 
   openSidenav(): void {
     this.layoutService.openSidenav();
-  }
-
-  openMegaMenu(origin: ElementRef | HTMLElement): void {
-    this.megaMenuOpen$ = of(
-      this.popoverService.open({
-        content: MegaMenuComponent,
-        origin,
-        offsetY: 12,
-        position: [
-          {
-            originX: 'start',
-            originY: 'bottom',
-            overlayX: 'start',
-            overlayY: 'top'
-          },
-          {
-            originX: 'end',
-            originY: 'bottom',
-            overlayX: 'end',
-            overlayY: 'top'
-          }
-        ]
-      })
-    ).pipe(
-      switchMap(popoverRef => popoverRef.afterClosed$.pipe(map(() => false))),
-      startWith(true)
-    );
   }
 
   openSearch(): void {

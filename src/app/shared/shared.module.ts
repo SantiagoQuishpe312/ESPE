@@ -5,12 +5,11 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { EspeDatePipe } from './pipes/espe-date.pipe';
 import { EspeDatetimePipe } from './pipes/espe-datetime.pipe';
 import { EspeAvatarComponent } from './components/espe-avatar/espe-avatar.component';
-import { StatusHighlightDirective } from './directives/status-highlight.directive';
-import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { EspeTableObjectPipe } from 'src/app/shared/pipes/espe-table-object.pipe';
 
 @NgModule({
   declarations: [
@@ -19,15 +18,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     EspeDatePipe,
     EspeDatetimePipe,
     EspeAvatarComponent,
-    StatusHighlightDirective,
-    ConfirmationModalComponent
+    EspeTableObjectPipe
   ],
   exports: [
     UserAvatarComponent,
     EspeDatePipe,
     EspeAvatarComponent,
     LoadingComponent,
-    StatusHighlightDirective
+    EspeTableObjectPipe
   ],
   providers: [DatePipe],
   imports: [

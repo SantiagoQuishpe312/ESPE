@@ -20,13 +20,13 @@ import { registerLocaleData } from '@angular/common';
 import { getSpanishPaginatorIntl } from 'src/app/core/utils/paginator-util';
 import { GlobalConstant } from 'src/app/core/constant/global-constant';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { LoaderInterceptor } from 'src/app/core/interceptors/loader.interceptor';
+//import { LoaderInterceptor } from 'src/app/core/interceptors/loader.interceptor';
 import { GlobalErrorHandlerService } from 'src/app/core/services/global-error-handler.service';
 
 registerLocaleData(localeES, GlobalConstant.LOCAL_CODE);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -48,11 +48,11 @@ registerLocaleData(localeES, GlobalConstant.LOCAL_CODE);
         appearance: 'standard'
       } as MatFormFieldDefaultOptions
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoaderInterceptor,
-      multi: true
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: LoaderInterceptor,
+    //   multi: true
+    // },
     {
       provide: LOCALE_ID,
       useValue: GlobalConstant.LOCAL_CODE

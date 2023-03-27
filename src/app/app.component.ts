@@ -21,6 +21,8 @@ import {
 } from '../@vex/components/config-panel/color-variables';
 import { AuthService } from 'src/app/core/auth/services/auth.service';
 import { GlobalUserService} from 'src/app/core/http/user/global-user.service'
+
+
 @Component({
   selector: 'vex-root',
   templateUrl: './app.component.html',
@@ -73,20 +75,6 @@ export class AppComponent implements OnInit {
       }
     );
 
-    /**
-     * Customize the template to your needs with the ConfigService
-     * Example:
-     *  this.configService.updateConfig({
-     *    sidenav: {
-     *      title: 'Custom App',
-     *      imageUrl: '//placehold.it/100x100',
-     *      showCollapsePin: false
-     *    },
-     *    footer: {
-     *      visible: false
-     *    }
-     *  });
-     */
     this.configService.updateConfig({
       style: {
         colorScheme: ColorSchemeName.light,
@@ -115,11 +103,6 @@ export class AppComponent implements OnInit {
       }
     });
 
-    /**
-     * Config Related Subscriptions
-     * You can remove this if you don't need the functionality of being able to enable specific configs with queryParams
-     * Example: example.com/?layout=apollo&style=default
-     */
     this.route.queryParamMap.subscribe((queryParamMap: ParamMap) => {
       if (queryParamMap.has('layout')) {
         this.configService.setConfig(
@@ -142,20 +125,22 @@ export class AppComponent implements OnInit {
         return;
       }
 
-      setTimeout(() => {
-        this.isLoggedIn = this.authService.isLoggedIn();
-        if (!this.isLoggedIn) {
-          this.login();
-        } else {
-          if (this.existClaims()) {
-          this.globalUser.getUserByUsername(this.authService.getUserName());
-          }
+      // setTimeout(() => {
+      //   this.isLoggedIn = this.authService.isLoggedIn();
+      //   if (!this.isLoggedIn) {
+      //     this.login();
+      //   } else {
+      //     if (this.existClaims()) {
+      //     this.globalUser.getUserByUsername(this.authService.getUserName());
+      //     }
     
-        }
-      }, 1000); 
+      //   }
+      // }, 1000); 
     
 
       this.authService.redirection();
+
+
 
       if (queryParamMap.has('primaryColor')) {
         const color: ColorVariable =
@@ -181,55 +166,35 @@ export class AppComponent implements OnInit {
       }
     });
 
-    /**
-     * Add your own routes here
-     */
+  
     this.navigationService.items = [
       {
         type: 'subheading',
-        label: 'Menú 1',
+        label: 'Main',
         children: [
           {
             type: 'link',
-            label: 'Submenú 1',
-            route: 'administracion/periodos-seguimiento',
+            label: 'Principal',
+            route: 'main/principal',
             icon: 'mat:people'
           }
         ]
       },
-      // {
-      //   type: 'subheading',
-      //   label: 'Coordinador',
-      //   children: [
-      //     {
-      //       type: 'link',
-      //       label: 'Programas analíticos',
-      //       route: 'coordinador/programas-analiticos',
-      //       icon: 'mat:assignment'
-      //     },
-      //     {
-      //       type: 'link',
-      //       label: 'Aprobación sílabo',
-      //       route: 'coordinador/aprobacion-silabo',
-      //       icon: 'mat:people'
-      //     }
-      //   ]
-      // },
       {
         type: 'subheading',
-        label: 'Menú 2',
+        label: 'Ejemplo',
         children: [
           {
             type: 'link',
-            label: 'Submenú 2',
-            route: 'administracion/periodos-seguimientos',
-            icon: 'mat:today'
-          }
+            label: 'ejemplo',
+            route: 'main/ejemplo',
+            icon: 'mat:school'
+          },
         ]
-      }
+      },
     ];
 
-    this.setInterval();
+    // this.setInterval();
 
 
   }
@@ -242,33 +207,31 @@ export class AppComponent implements OnInit {
     this.authService.obtainAccessToken();
   }
 
-  verifiedToken() {
-    let timeExpired = sessionStorage.getItem('expires_at');
+  // verifiedToken() {
+  //   let timeExpired = sessionStorage.getItem('expires_at');
 
-    let timeExpiredLess = Number(timeExpired) - (10 * 60 * 1000);
-
-    let timeNow = new Date().getTime();
+  //   let timeExpiredLess = Number(timeExpired) - (10 * 60 * 1000);
+  //   let timeNow = new Date().getTime();
    
-    if (timeExpiredLess <= timeNow) {
-      this.authService.refreshToken();
-    }
-    // obtener la fecha actual  
-  }
+  //   if (timeExpiredLess <= timeNow) {
+  //     this.authService.refreshToken();
+  //   }
+  //   // obtener la fecha actual  
+  // }
 
 
-  setInterval() {
-    setInterval(() => {
-      this.verifiedToken();
-    }, 600000);
-  }
+  // setInterval() {
+  //   setInterval(() => {
+  //     this.verifiedToken();
+  //   }, 10000);
+  // }
 
-  existClaims(): boolean {
-    let claims = sessionStorage.getItem('id_token_claims_obj');
-    if (claims != null) {
-      return true;
-    }
-    return false;
-  }
-
+  // existClaims(): boolean {
+  //   let claims = sessionStorage.getItem('id_token_claims_obj');
+  //   if (claims != null) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
 }

@@ -1,7 +1,6 @@
 export const environment = {
   production: false,
-  appApiUrl: 'https://silabo-api-test.espe.edu.ec/api/v1',
-  configApiUrl: 'https://silabo-config-test.espe.edu.ec/api/v1',
+  appApiUrl: '',
   espematicoApiUrl: 'https://espematico-api.espe.edu.ec/reporteWs',
   imageApiUrl: 'https://image-api.espe.edu.ec/imagen/',
   sso: {

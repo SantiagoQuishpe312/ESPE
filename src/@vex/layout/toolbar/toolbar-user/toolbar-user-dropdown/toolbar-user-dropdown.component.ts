@@ -16,16 +16,16 @@ import { TokenClaim } from 'src/app/types/token-claim.types';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToolbarUserDropdownComponent {
-  items: MenuItem[] = [
-    {
-      id: '1',
-      icon: 'mat:account_circle',
-      label: 'Mi perfil',
-      description: 'Información personal',
-      colorClass: 'text-teal',
-      route: '/mi-perfil'
-    }
-  ];
+  // items: MenuItem[] = [
+  //   {
+  //     id: '1',
+  //     icon: 'mat:account_circle',
+  //     label: 'Mi perfil',
+  //     description: 'Información personal',
+  //     colorClass: 'text-teal',
+  //     route: '/mi-perfil'
+  //   }
+  // ];
 
   trackById = trackById;
   tokenClaims: TokenClaim = this.authService.tokenClaims;
