@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent} from './pages/main/main.component';
 import { EjemploComponent } from './pages/ejemplo/ejemplo.component';
+import { DegreeComponent } from './pages/degree/degree.component';
 const routes: Routes = [
   {
     path: 'principal',
@@ -10,6 +11,10 @@ const routes: Routes = [
   {
     path: 'ejemplo',
     component: EjemploComponent
+  },
+  {
+    path: 'degree',
+    component: DegreeComponent
   }
 ];
 

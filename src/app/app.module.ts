@@ -22,13 +22,16 @@ import { GlobalConstant } from 'src/app/core/constant/global-constant';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 //import { LoaderInterceptor } from 'src/app/core/interceptors/loader.interceptor';
 import { GlobalErrorHandlerService } from 'src/app/core/services/global-error-handler.service';
+import { FormsModule } from '@angular/forms';
+// import { DegreeComponent } from './modules/main/pages/degree/degree.component';
 
 registerLocaleData(localeES, GlobalConstant.LOCAL_CODE);
 
 @NgModule({
-  declarations: [AppComponent, ],
+  declarations: [AppComponent ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,

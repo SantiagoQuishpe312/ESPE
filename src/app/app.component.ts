@@ -182,12 +182,12 @@ export class AppComponent implements OnInit {
       },
       {
         type: 'subheading',
-        label: 'Ejemplo',
+        label: 'Titulación',
         children: [
           {
             type: 'link',
-            label: 'ejemplo',
-            route: 'main/ejemplo',
+            label: 'Titulación',
+            route: 'main/degree',
             icon: 'mat:school'
           },
         ]
