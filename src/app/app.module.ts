@@ -10,6 +10,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from 'src/app/core/core.module';
 import { MainLayoutModule } from 'src/app/layout/main-layout.module';
 import { AuthModule } from 'src/app/core/auth/auth.module';
+import { TokenInterceptorService } from './core/interceptors/token-interceptor.service';
 import {
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
   MatFormFieldDefaultOptions
@@ -44,6 +45,11 @@ registerLocaleData(localeES, GlobalConstant.LOCAL_CODE);
     HotToastModule.forRoot()
   ],
   providers: [
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: TokenInterceptorService,
+        multi: true,
+      },
     { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() },
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
